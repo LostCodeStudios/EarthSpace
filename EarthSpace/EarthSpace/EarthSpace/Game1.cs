@@ -77,7 +77,19 @@ namespace EarthSpace
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            KeyboardState keyState = Keyboard.GetState();
+
+            if (keyState.IsKeyDown(Keys.Space))
+            {
+                if (GraphicsManager.IsVisible(sprite))
+                {
+                    sprite.Hide();
+                }
+                else
+                {
+                    sprite.Show();
+                }
+            }
 
             base.Update(gameTime);
         }
