@@ -20,6 +20,8 @@ namespace EarthSpace
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Sprite sprite;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -49,6 +51,10 @@ namespace EarthSpace
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             GraphicsManager.Initialize(spriteBatch, graphics);
+
+            sprite = new Sprite();
+            sprite.Texture = Content.Load<Texture2D>("spacepirate");
+            sprite.Show();
         }
 
         /// <summary>
