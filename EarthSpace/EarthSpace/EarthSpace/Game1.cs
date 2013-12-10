@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using EarthSpace.Graphics;
+using EarthSpace.Graphics.Drawables;
 
 namespace EarthSpace
 {
@@ -21,6 +22,7 @@ namespace EarthSpace
         SpriteBatch spriteBatch;
 
         Sprite sprite;
+        Label label;
 
         public Game1()
         {
@@ -55,6 +57,11 @@ namespace EarthSpace
             sprite = new Sprite();
             sprite.Texture = Content.Load<Texture2D>("spacepirate");
             sprite.Show();
+
+            label = new Label();
+            label.Text = "Earth Space";
+            label.Font = Content.Load<SpriteFont>("font");
+            label.Show();
         }
 
         /// <summary>

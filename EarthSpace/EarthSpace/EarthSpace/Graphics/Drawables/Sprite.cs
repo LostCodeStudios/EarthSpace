@@ -5,7 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
 
-namespace EarthSpace.Graphics
+namespace EarthSpace.Graphics.Drawables
 {
     /// <summary>
     /// A sprite.
@@ -97,6 +97,8 @@ namespace EarthSpace.Graphics
 
         #endregion Properties
 
+        #region Initialization
+
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -107,6 +109,8 @@ namespace EarthSpace.Graphics
             Scale = new Vector2(1f, 1f);
             Effects = SpriteEffects.None;
         }
+
+        #endregion
 
         #region IDrawable
 
