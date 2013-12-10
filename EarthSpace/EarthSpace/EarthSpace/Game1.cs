@@ -98,6 +98,26 @@ namespace EarthSpace
                 }
             }
 
+            if (keyState.IsKeyDown(Keys.Left))
+            {
+                sprite.Position = new Vector2(sprite.Position.X - 10, sprite.Position.Y);
+            }
+
+            if (keyState.IsKeyDown(Keys.Right))
+            {
+                sprite.Position = new Vector2(sprite.Position.X + 10, sprite.Position.Y);
+            }
+
+            if (keyState.IsKeyDown(Keys.Up))
+            {
+                sprite.Position = new Vector2(sprite.Position.X, sprite.Position.Y - 10);
+            }
+
+            if (keyState.IsKeyDown(Keys.Down))
+            {
+                sprite.Position = new Vector2(sprite.Position.X, sprite.Position.Y + 10);
+            }
+
             base.Update(gameTime);
         }
 
