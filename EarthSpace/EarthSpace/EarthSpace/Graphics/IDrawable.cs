@@ -69,5 +69,68 @@ namespace EarthSpace.Graphics
         //We are the best coders dude.
 
         //TIME TO COMMIT.
+
+        //I want top-down stealth puzzles
+        
+        //I don't. Not this game. When we go 3d. nächtes Jahre
+
+        //Still multiple characters thing
+        //same time frame
+        //SO COOL
+
+        //Potions that slow down time. (Wild herbs)
+        //(this is an easter egg)
+
+
+        //We need an item system. They should be physical and dropped from entities when killed (minecraft style drops)
+
+
+        //This is how I get internships
+        //I(freqntr)
+
+        //you don't even want it. 
+        //Lol I lead girls on just like employers. in style bitch
+        // lauara anderson
+
+        //I send all the mixed messages
+
+        //like today I almost ignored her (most days)
+        //the anonomly was when i talked to her (after we danced) that's the only fukkinh time
+
+        //On the non-development side as well
+        // This means blazing. jk
+
+        //Find the slowest moving, oldest, most inefficient industry, and develop GREAT software for it. That's how you make real money.
+
+        //Do you love us robert?
+        //We love you
+        //join us. I heard this is like multipalyer or something.
+
+        //I don't have an internet connection
+        //NO MULTIPLAY
+
+        //fUCK, gg
+        //This is the best fucking soruce code file I've ever partaken in.
+
+        //I'm deleting this when you leave.
+        //Please don't :(
+
+        //let's privatize the repo immediately  
+
+        //Sure
+
+        //Gonna lead them on, and stop talking to them
+
+        //Like the last 3 internships.
+
+        //This is about you and Xmission isn't it
+        //:(
+
+        //not at Google
+        //Google asks for SAT scores and GPA even if you're like 45 applying for a job.
+
+        //LOL. FUCK GOOGLE. THEY HIRE DIRECTLY FROM MIT
+        //LOL FUCK
+
     }
 }
