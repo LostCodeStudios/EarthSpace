@@ -112,6 +112,7 @@
     <Compile Include="Graphics\IDrawable.cs" />
     <Compile Include="Graphics\Drawables\Sprite.cs" />
     <Compile Include="Processing\IProcess.cs" />
+    <Compile Include="Processing\Processes\DelayProcess.cs" />
     <Compile Include="Processing\ProcessManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
@@ -156,7 +157,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Input\" />
-    <Folder Include="Processing\Processes\" />
     <Folder Include="Transitions\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
