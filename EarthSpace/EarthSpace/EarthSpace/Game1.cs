@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using EarthSpace.Graphics;
 using EarthSpace.Graphics.Drawables;
+using EarthSpace.Processing;
 
 namespace EarthSpace
 {
@@ -70,7 +71,7 @@ namespace EarthSpace
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            Content.Unload();
         }
 
         /// <summary>
@@ -80,43 +81,7 @@ namespace EarthSpace
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            KeyboardState keyState = Keyboard.GetState();
-
-            if (keyState.IsKeyDown(Keys.Space))
-            {
-                if (GraphicsManager.IsVisible(sprite))
-                {
-                    sprite.Hide();
-                }
-                else
-                {
-                    sprite.Show();
-                }
-            }
-
-            if (keyState.IsKeyDown(Keys.Left))
-            {
-                sprite.Position = new Vector2(sprite.Position.X - 10, sprite.Position.Y);
-            }
-
-            if (keyState.IsKeyDown(Keys.Right))
-            {
-                sprite.Position = new Vector2(sprite.Position.X + 10, sprite.Position.Y);
-            }
-
-            if (keyState.IsKeyDown(Keys.Up))
-            {
-                sprite.Position = new Vector2(sprite.Position.X, sprite.Position.Y - 10);
-            }
-
-            if (keyState.IsKeyDown(Keys.Down))
-            {
-                sprite.Position = new Vector2(sprite.Position.X, sprite.Position.Y + 10);
-            }
+            ProcessManager.Update(gameTime);
 
             base.Update(gameTime);
         }

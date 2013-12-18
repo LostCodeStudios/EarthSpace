@@ -115,7 +115,7 @@ namespace EarthSpace.Graphics
         //I'm deleting this when you leave.
         //Please don't :(
 
-        //let's privatize the repo immediately  
+        //let's privatize the repo immediately
 
         //Sure
 
@@ -131,6 +131,16 @@ namespace EarthSpace.Graphics
 
         //LOL. FUCK GOOGLE. THEY HIRE DIRECTLY FROM MIT
         //LOL FUCK
+
+        //She aint gonna look at yo resume beetch? <LA
+
+        //who? what? ^^? who is she? im so confused. // did i right dat? wtf
+
+        //XNA LOOKS SO NICE
+        //FUCK OPENGL
+        //DIRECTX 4 LUFE
+
+        //waste of my time ,-- whut being a live? a life a liff A LIVE ALIVEwhut? this whole talk has been
 
     }
 }
