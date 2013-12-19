@@ -8,8 +8,8 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("EarthSpace")]
 [assembly: AssemblyProduct("EarthSpace")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyCompany("Hewlett-Packard Company")]
-[assembly: AssemblyCopyright("Copyright © Hewlett-Packard Company 2013")]
+[assembly: AssemblyCompany("Hewlett-Packard")]
+[assembly: AssemblyCopyright("Copyright © Hewlett-Packard 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -22,7 +22,7 @@ using System.Runtime.InteropServices;
 // On Windows, the following GUID is for the ID of the typelib if this
 // project is exposed to COM. On other platforms, it unique identifies the
 // title storage container when deploying this assembly to the device.
-[assembly: Guid("80dd838e-ff6c-457a-b962-4b0168feb5b1")]
+[assembly: Guid("0679b838-1c84-4d3c-9f60-71997a4345fb")]
 
 // Version information for an assembly consists of the following four values:
 //
