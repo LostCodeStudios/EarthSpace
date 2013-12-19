@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,6 +21,22 @@ namespace EarthSpace.Input
         MouseState lastMouseState;
 
         #endregion Fields
+
+        #region Initialization
+
+        /// <summary>
+        /// Creates a new InputState.
+        /// </summary>
+        public InputState()
+        {
+            keyState = Keyboard.GetState();
+            mouseState = Mouse.GetState();
+
+            lastKeyState = keyState;
+            lastMouseState = mouseState;
+        }
+
+        #endregion
 
         #region Properties
 
@@ -133,6 +150,17 @@ namespace EarthSpace.Input
         public bool RightClickReleased()
         {
             return mouseState.RightButton == ButtonState.Released && lastMouseState.LeftButton == ButtonState.Pressed;
+        }
+
+        /// <summary>
+        /// The position of the mouse.
+        /// </summary>
+        public Point MousePosition
+        {
+            get
+            {
+                return new Point(mouseState.X, mouseState.Y);
+            }
         }
 
         #endregion

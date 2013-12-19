@@ -111,6 +111,11 @@
     <Compile Include="Graphics\GraphicsManager.cs" />
     <Compile Include="Graphics\IDrawable.cs" />
     <Compile Include="Graphics\Drawables\Sprite.cs" />
+    <Compile Include="Input\InputHandler.cs" />
+    <Compile Include="Input\InputHandlers\ClickHandler.cs" />
+    <Compile Include="Input\InputHandlers\KeyPressHandler.cs" />
+    <Compile Include="Input\InputHandlers\KeyReleaseHandler.cs" />
+    <Compile Include="Input\InputManager.cs" />
     <Compile Include="Input\InputState.cs" />
     <Compile Include="Processing\IProcess.cs" />
     <Compile Include="Processing\Processes\DelayProcess.cs" />

@@ -11,6 +11,8 @@ using Microsoft.Xna.Framework.Media;
 using EarthSpace.Graphics;
 using EarthSpace.Graphics.Drawables;
 using EarthSpace.Processing;
+using EarthSpace.Input;
+using EarthSpace.Input.InputHandlers;
 
 namespace EarthSpace
 {
@@ -24,6 +26,8 @@ namespace EarthSpace
 
         Sprite sprite;
         Label label;
+
+        ClickHandler clickHandler;
 
         public Game1()
         {
@@ -54,6 +58,7 @@ namespace EarthSpace
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             GraphicsManager.Initialize(spriteBatch, graphics);
+            InputManager.Initialize();
 
             sprite = new Sprite();
             sprite.Texture = Content.Load<Texture2D>("spacepirate");
@@ -63,6 +68,10 @@ namespace EarthSpace
             label.Text = "Earth Space";
             label.Font = Content.Load<SpriteFont>("font");
             label.Show();
+
+            clickHandler = new ClickHandler(MouseButton.Left);
+            clickHandler.OnTrigger += onClick;
+            clickHandler.Enable();
         }
 
         /// <summary>
@@ -81,6 +90,7 @@ namespace EarthSpace
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            InputManager.Update();
             ProcessManager.Update(gameTime);
 
             base.Update(gameTime);
@@ -95,6 +105,18 @@ namespace EarthSpace
             GraphicsManager.Draw();
 
             base.Draw(gameTime);
+        }
+
+        void onClick(InputState input)
+        {
+            if (GraphicsManager.IsVisible(sprite))
+            {
+                sprite.Hide();
+            }
+            else
+            {
+                sprite.Show();
+            }
         }
     }
 }
