@@ -28,6 +28,7 @@ namespace EarthSpace
         Label label;
 
         ClickHandler clickHandler;
+        KeyPressHandler keyHandler;
 
         public Game1()
         {
@@ -44,6 +45,7 @@ namespace EarthSpace
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
+            IsMouseVisible = true;
 
             base.Initialize();
         }
@@ -69,9 +71,14 @@ namespace EarthSpace
             label.Font = Content.Load<SpriteFont>("font");
             label.Show();
 
-            clickHandler = new ClickHandler(MouseButton.Left);
+            clickHandler = new ClickHandler(MouseButton.Right);
+            clickHandler.ClickArea = new Rectangle(0, 0, GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 2);
             clickHandler.OnTrigger += onClick;
             clickHandler.Enable();
+
+            keyHandler = new KeyPressHandler(Keys.Space);
+            keyHandler.OnTrigger += onClick;
+            keyHandler.Enable();
         }
 
         /// <summary>

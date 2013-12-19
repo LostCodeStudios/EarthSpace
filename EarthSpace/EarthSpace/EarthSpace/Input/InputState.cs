@@ -140,7 +140,7 @@ namespace EarthSpace.Input
         /// <returns></returns>
         public bool RightClicked()
         {
-            return mouseState.RightButton == ButtonState.Pressed && lastMouseState.LeftButton == ButtonState.Released;
+            return mouseState.RightButton == ButtonState.Pressed && lastMouseState.RightButton == ButtonState.Released;
         }
 
         /// <summary>
