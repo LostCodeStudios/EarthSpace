@@ -77,7 +77,7 @@ namespace EarthSpace
             clickHandler.Enable();
 
             keyHandler = new KeyPressHandler(Keys.Space);
-            keyHandler.OnTrigger += onClick;
+            keyHandler.OnTrigger += onSpace;
             keyHandler.Enable();
         }
 
@@ -119,10 +119,26 @@ namespace EarthSpace
             if (GraphicsManager.IsVisible(sprite))
             {
                 sprite.Hide();
+                keyHandler.Disable();
             }
             else
             {
                 sprite.Show();
+                keyHandler.Enable();
+            }
+        }
+
+        void onSpace(InputState input)
+        {
+            if (GraphicsManager.IsVisible(sprite))
+            {
+                sprite.Hide();
+                clickHandler.Disable();
+            }
+            else
+            {
+                sprite.Show();
+                clickHandler.Enable();
             }
         }
     }
