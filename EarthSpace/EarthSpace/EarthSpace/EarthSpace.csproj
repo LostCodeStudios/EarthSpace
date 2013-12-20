@@ -119,6 +119,7 @@
     <Compile Include="Input\InputState.cs" />
     <Compile Include="Processing\IProcess.cs" />
     <Compile Include="Processing\Processes\DelayProcess.cs" />
+    <Compile Include="Processing\Processes\RecurrentDelayProcess.cs" />
     <Compile Include="Processing\ProcessManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />

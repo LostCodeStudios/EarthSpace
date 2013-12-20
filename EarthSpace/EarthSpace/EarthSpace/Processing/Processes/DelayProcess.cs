@@ -5,7 +5,7 @@ using System.Text;
 
 namespace EarthSpace.Processing.Processes
 {
-    public sealed class DelayProcess : IProcess
+    public class DelayProcess : IProcess
     {
         /// <summary>
         /// Creates a new delay process.
@@ -41,13 +41,13 @@ namespace EarthSpace.Processing.Processes
             currentTime += gameTime.ElapsedGameTime.Seconds;
             if (currentTime > delayTime)
             {
-                onEnd.Invoke();
                 End();
             }
         }
 
-        public void End()
+        public virtual void End()
         {
+            onEnd.Invoke();
             ProcessManager.Remove(this);
         }
         #endregion
