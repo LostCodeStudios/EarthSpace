@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Processing.Processes
 {
@@ -20,13 +17,14 @@ namespace EarthSpace.Processing.Processes
 
         #region Fields
 
-        float delayTime;
-        float currentTime = 0;
-        Action onEnd;
+        private float delayTime;
+        private float currentTime = 0;
+        private Action onEnd;
 
-        #endregion Fields 
+        #endregion Fields
 
         #region Update
+
         public void Begin()
         {
             ProcessManager.Add(this);
@@ -51,6 +49,7 @@ namespace EarthSpace.Processing.Processes
             onEnd.Invoke();
             ProcessManager.Remove(this);
         }
-        #endregion
+
+        #endregion Update
     }
 }

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace EarthSpace.Input
+﻿namespace EarthSpace.Input
 {
     /// <summary>
     /// An event triggered by an InputHandler.
@@ -53,6 +48,5 @@ namespace EarthSpace.Input
         {
             Enabled = false;
         }
-
     }
 }

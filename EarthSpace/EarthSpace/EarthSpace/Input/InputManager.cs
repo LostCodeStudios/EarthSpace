@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Input
 {
@@ -12,8 +10,8 @@ namespace EarthSpace.Input
     {
         #region Fields
 
-        static InputState input;
-        static HashSet<InputHandler> handlers = new HashSet<InputHandler>();
+        private static InputState input;
+        private static HashSet<InputHandler> handlers = new HashSet<InputHandler>();
 
         #endregion Fields
 
@@ -27,7 +25,7 @@ namespace EarthSpace.Input
             input = new InputState();
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Input Handler Management
 

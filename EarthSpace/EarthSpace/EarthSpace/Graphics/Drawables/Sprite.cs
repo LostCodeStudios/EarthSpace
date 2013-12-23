@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace EarthSpace.Graphics.Drawables
 {
@@ -40,7 +36,7 @@ namespace EarthSpace.Graphics.Drawables
             get;
             set;
         }
-        
+
         /// <summary>
         /// Color of the sprite.
         /// </summary>
@@ -110,7 +106,7 @@ namespace EarthSpace.Graphics.Drawables
             Effects = SpriteEffects.None;
         }
 
-        #endregion
+        #endregion Initialization
 
         #region IDrawable
 
@@ -187,6 +183,6 @@ namespace EarthSpace.Graphics.Drawables
             Origin = new Vector2(Width / 2, Height / 2);
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

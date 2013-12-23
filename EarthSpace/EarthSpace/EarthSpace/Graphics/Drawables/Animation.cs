@@ -1,10 +1,7 @@
 ﻿using EarthSpace.Processing;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Graphics.Drawables
 {
@@ -15,13 +12,13 @@ namespace EarthSpace.Graphics.Drawables
     {
         #region Fields
 
-        Sprite sprite;
-        float frameTime;
-        float elapsedTime;
-        Rectangle[] frames;
-        int currentFrame;
+        private Sprite sprite;
+        private float frameTime;
+        private float elapsedTime;
+        private Rectangle[] frames;
+        private int currentFrame;
 
-        #endregion
+        #endregion Fields
 
         #region Initialization
 
@@ -85,10 +82,9 @@ namespace EarthSpace.Graphics.Drawables
         public Animation(Texture2D texture, float frameTime, int cols, int rows)
             : this(texture, frameTime, new Rectangle(0, 0, texture.Width, texture.Height), cols, rows)
         {
-
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Properties
 
@@ -109,7 +105,7 @@ namespace EarthSpace.Graphics.Drawables
             get { return sprite.Position; }
             set { sprite.Position = value; }
         }
-        
+
         /// <summary>
         /// Color of the sprite.
         /// </summary>
@@ -176,7 +172,6 @@ namespace EarthSpace.Graphics.Drawables
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            
         }
 
         public void Hide()
@@ -184,7 +179,7 @@ namespace EarthSpace.Graphics.Drawables
             sprite.Hide();
         }
 
-        #endregion
+        #endregion IDrawable
 
         #region IProcess
 
@@ -195,7 +190,7 @@ namespace EarthSpace.Graphics.Drawables
 
         public void Update(GameTime gameTime)
         {
-            elapsedTime += (float) gameTime.ElapsedGameTime.TotalSeconds;
+            elapsedTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             if (elapsedTime >= frameTime)
             {
@@ -212,6 +207,6 @@ namespace EarthSpace.Graphics.Drawables
             ProcessManager.Remove(this);
         }
 
-        #endregion
+        #endregion IProcess
     }
 }

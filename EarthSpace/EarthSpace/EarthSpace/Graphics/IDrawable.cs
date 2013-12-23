@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 
 namespace EarthSpace.Graphics
 {
@@ -34,7 +30,7 @@ namespace EarthSpace.Graphics
         //The beautiful thing was that a PERSON set the arrow trap with those pressure plates in between caskets
         //And I noticed and avoided it and took the treasure
 
-        //All experiences possible in 2D mapping x to z (height) are equally as implamentable by converting x and y 
+        //All experiences possible in 2D mapping x to z (height) are equally as implamentable by converting x and y
 
         // You have the same breadth for experience
 
@@ -44,17 +40,16 @@ namespace EarthSpace.Graphics
         //And good PCG (a la Spelunky) takes sooooo much expertise
         //So I wanna design something
 
-
         //I want top down though, that's my only request, movement like Pickn'Sticks. Open world.
         //ok we could technically design an entire world
         //but why
 
         //You can have a linear experience.
         //MMOS do this.
-        //It's called, phishing. The world changes as you progress through the story. Therefore its linear. 
+        //It's called, phishing. The world changes as you progress through the story. Therefore its linear.
         //For example, we have the age mechanic. That is an underlying linear force, but on top of that we can add story and major events.
         //As time progresses sure things age, but we can also have world changing occurences. An astroid hits, the town is destroyed.
-        
+
         //I really liked your idea of aging and dynamic world. Your affect on the game, but the experience is built by us not PCG
 
         //kkkLAN party
@@ -65,13 +60,13 @@ namespace EarthSpace.Graphics
 
         //nah, but it would be so chill to have this in the repo. Fuck it, who cares. We'll probably privatise the repos when we have to apply for real jobs
 
-        //IDrawable.cs 500 lines 
+        //IDrawable.cs 500 lines
         //We are the best coders dude.
 
         //TIME TO COMMIT.
 
         //I want top-down stealth puzzles
-        
+
         //I don't. Not this game. When we go 3d. nächtes Jahre
 
         //Still multiple characters thing
@@ -81,14 +76,12 @@ namespace EarthSpace.Graphics
         //Potions that slow down time. (Wild herbs)
         //(this is an easter egg)
 
-
         //We need an item system. They should be physical and dropped from entities when killed (minecraft style drops)
-
 
         //This is how I get internships
         //I(freqntr)
 
-        //you don't even want it. 
+        //you don't even want it.
         //Lol I lead girls on just like employers. in style bitch
         // lauara anderson
 
@@ -141,6 +134,5 @@ namespace EarthSpace.Graphics
         //DIRECTX 4 LUFE
 
         //waste of my time ,-- whut being a live? a life a liff A LIVE ALIVEwhut? this whole talk has been
-
     }
 }

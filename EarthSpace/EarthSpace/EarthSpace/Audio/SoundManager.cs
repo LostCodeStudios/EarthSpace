@@ -1,15 +1,12 @@
 ﻿using Microsoft.Xna.Framework.Audio;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Audio
 {
     public static class SoundManager
     {
-        static Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>();
-        static float volume;
+        private static Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>();
+        private static float volume;
 
         public static float Volume
         {
@@ -33,7 +30,6 @@ namespace EarthSpace.Audio
             sounds[key].Play(Volume * volume, pitch, pan);
         }
 
-        public static 
-        
+        public static
     }
 }

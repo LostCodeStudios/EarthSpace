@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
 
 namespace EarthSpace.Graphics.Drawables
 {
@@ -110,7 +106,7 @@ namespace EarthSpace.Graphics.Drawables
             Effects = SpriteEffects.None;
         }
 
-        #endregion
+        #endregion Initialization
 
         #region IDrawable
 
@@ -129,7 +125,7 @@ namespace EarthSpace.Graphics.Drawables
             GraphicsManager.Remove(this);
         }
 
-        #endregion
+        #endregion IDrawable
 
         #region Helpers
 
@@ -156,6 +152,6 @@ namespace EarthSpace.Graphics.Drawables
                 (int)size.X, (int)size.Y);
         }
 
-        #endregion
+        #endregion Helpers
     }
 }

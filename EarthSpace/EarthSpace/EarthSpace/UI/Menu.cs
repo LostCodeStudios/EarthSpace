@@ -8,7 +8,6 @@ using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace EarthSpace.UI
 {
@@ -16,36 +15,35 @@ namespace EarthSpace.UI
     {
         #region Fields
 
-        SpriteFont titleFont;
-        SpriteFont entryFont;
+        private SpriteFont titleFont;
+        private SpriteFont entryFont;
 
-        Color titleColor = Color.Yellow;
-        Color entryColor = Color.White;
-        Color entryColorSelected = Color.Yellow;
-        Color entryColorDisabled = Color.Gray;
+        private Color titleColor = Color.Yellow;
+        private Color entryColor = Color.White;
+        private Color entryColorSelected = Color.Yellow;
+        private Color entryColorDisabled = Color.Gray;
 
-        Label titleLabel;
-        List<Label> entryLabels = new List<Label>();
+        private Label titleLabel;
+        private List<Label> entryLabels = new List<Label>();
 
-        int selectedIndex;
-        Sprite selectionSprite;
-        float spriteOffset;
+        private int selectedIndex;
+        private Sprite selectionSprite;
+        private float spriteOffset;
 
-        List<Action> entryActions = new List<Action>();
-        List<Int32> disabledEntries = new List<Int32>();
+        private List<Action> entryActions = new List<Action>();
+        private List<Int32> disabledEntries = new List<Int32>();
 
-        Vector2 titlePosition = new Vector2(GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 5);
-        Vector2 entryPosition = new Vector2(GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 3);
+        private Vector2 titlePosition = new Vector2(GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 5);
+        private Vector2 entryPosition = new Vector2(GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 3);
 
-        bool allowCancel = false;
+        private bool allowCancel = false;
 
-        InputHandler moveUp;
-        InputHandler moveDown;
-        InputHandler select;
-        InputHandler cancel;
-        InputHandler clickSelect;
-        List<InputHandler> hoverHandlers = new List<InputHandler>();
-
+        private InputHandler moveUp;
+        private InputHandler moveDown;
+        private InputHandler select;
+        private InputHandler cancel;
+        private InputHandler clickSelect;
+        private List<InputHandler> hoverHandlers = new List<InputHandler>();
 
         #endregion Fields
 
@@ -77,7 +75,7 @@ namespace EarthSpace.UI
             clickSelect.OnTrigger += OnSelect;
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Properties
 
@@ -147,7 +145,7 @@ namespace EarthSpace.UI
             set { allowCancel = value; }
         }
 
-        #endregion
+        #endregion Properties
 
         #region IDrawable
 
@@ -194,7 +192,7 @@ namespace EarthSpace.UI
             select.Disable();
             if (allowCancel) cancel.Disable();
             clickSelect.Disable();
-            
+
             foreach (InputHandler handler in hoverHandlers)
             {
                 handler.Disable();
@@ -273,7 +271,7 @@ namespace EarthSpace.UI
             {
                 entryLabels[selectedIndex].Color = entryColor;
             }
-            
+
             selectedIndex = index;
             (clickSelect as ClickHandler).ClickArea = entryLabels[selectedIndex].ScreenArea();
 
@@ -290,6 +288,7 @@ namespace EarthSpace.UI
             Vector2 spritePosition = entryLabels[selectedIndex].Position;
             spritePosition.X -= spriteOffset;
             spritePosition.X -= selectionSprite.Width / 2;
+
             //spritePosition.Y -= selectionSprite.Height / 2;
 
             selectionSprite.CenterOrigin();
@@ -338,6 +337,6 @@ namespace EarthSpace.UI
             Hide();
         }
 
-        #endregion
+        #endregion Events
     }
 }

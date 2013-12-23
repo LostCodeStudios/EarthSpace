@@ -1,8 +1,6 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Microsoft.Xna.Framework;
 
 namespace EarthSpace.Processing
 {
@@ -13,9 +11,9 @@ namespace EarthSpace.Processing
     {
         #region Fields
 
-        static HashSet<IProcess> processes = new HashSet<IProcess>();
+        private static HashSet<IProcess> processes = new HashSet<IProcess>();
 
-        #endregion
+        #endregion Fields
 
         #region Process Management
 
@@ -46,7 +44,7 @@ namespace EarthSpace.Processing
         }
 
         /// <summary>
-        /// 
+        ///
         /// </summary>
         /// <param name="process"></param>
         /// <returns>Whether the given process is registered to the ProcessManager.</returns>
@@ -55,7 +53,7 @@ namespace EarthSpace.Processing
             return processes.Contains(process);
         }
 
-        #endregion
+        #endregion Process Management
 
         #region Update
 
@@ -65,12 +63,12 @@ namespace EarthSpace.Processing
         /// <param name="gameTime"></param>
         public static void Update(GameTime gameTime)
         {
-            for (int i = 0; i < processes.Count; i++ )
+            for (int i = 0; i < processes.Count; i++)
             {
                 processes.ElementAt(i).Update(gameTime);
             }
         }
 
-        #endregion
+        #endregion Update
     }
 }

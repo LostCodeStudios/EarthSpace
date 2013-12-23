@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Processing.Processes
 {
     public class TransitionProcess : IProcess
     {
-
         /// <summary>
         /// Creates a new transition between two numbers in a recurrent process.
         /// </summary>
@@ -65,31 +61,31 @@ namespace EarthSpace.Processing.Processes
             ProcessManager.Remove(this);
         }
 
-
-        #endregion
+        #endregion Update
 
         #region Fields
 
-        Action<float> onStep;
-        Action onEnd;
+        private Action<float> onStep;
+        private Action onEnd;
 
         private Regression regression;
 
-        float start;
-        float end;
-        float x = 0;
-        float duration;
+        private float start;
+        private float end;
+        private float x = 0;
+        private float duration;
 
         #endregion Fields
 
         #region 'Tweenyboppers'
+
         /// <summary>
         /// The regression delegate for tweens of all sorts.
         /// </summary>
-        protected delegate float Regression(float start, float end, float range, float x); 
+        protected delegate float Regression(float start, float end, float range, float x);
 
         /// <summary>
-        /// The linear tween for transitions between two points. 
+        /// The linear tween for transitions between two points.
         /// </summary>
         public static Regression Linear =
             (start, end, range, x) =>
@@ -102,8 +98,6 @@ namespace EarthSpace.Processing.Processes
             (start, end, range, x) =>
                 start * (float)Math.Pow(end / start, x / range);
 
-        #endregion 
-    
-
+        #endregion 'Tweenyboppers'
     }
 }
