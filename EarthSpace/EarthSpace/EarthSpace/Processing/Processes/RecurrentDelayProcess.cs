@@ -5,6 +5,9 @@ using System.Text;
 
 namespace EarthSpace.Processing.Processes
 {
+    /// <summary>
+    /// The recurrent delay process is similar to an interval based update loop, except for its intrinsic ability to run on finite occurrences.
+    /// </summary>
     public class RecurrentDelayProcess : DelayProcess
     {
         /// <summary>
