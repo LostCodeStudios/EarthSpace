@@ -61,13 +61,13 @@ namespace EarthSpace
             GraphicsManager.BackgroundColor = Color.Black;
             InputManager.Initialize();
 
-            SpriteFont font = Content.Load<SpriteFont>("darkII");
+            SpriteFont font = Content.Load<SpriteFont>("Fonts/darkII");
 
             mainMenu = new Menu("Earth Space", font, font);
             mainMenu.TitleColor = Color.White;
             mainMenu.EntryColor = Color.White;
             mainMenu.EntryColorSelected = Color.Red;
-            mainMenu.SelectionSprite.Texture = Content.Load<Texture2D>("sword");
+            mainMenu.SelectionSprite.Texture = Content.Load<Texture2D>("Textures/sword");
 
             mainMenu.AddEntry("Play", null);
             mainMenu.AddEntry("Exit", OnQuit);
