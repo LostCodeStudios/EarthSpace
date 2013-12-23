@@ -19,6 +19,7 @@ namespace EarthSpace.Processing.Processes
             : base(delayTime, onEnd)
         {
             this.occurences = occurences;
+            this.onOccur = onOccur;
         }
 
         #region Fields
@@ -37,6 +38,7 @@ namespace EarthSpace.Processing.Processes
             {
                 currentOccurences++;
                 onOccur.Invoke();
+
             }
             else
                 base.End();

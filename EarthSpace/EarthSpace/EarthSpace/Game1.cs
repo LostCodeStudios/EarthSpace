@@ -85,6 +85,17 @@ namespace EarthSpace
                 () => sprite.Hide());
             testDelay.Begin();
 
+            RecurrentDelayProcess testRecurrentDelay = new RecurrentDelayProcess(0.5f,
+                () => {
+                    if(GraphicsManager.IsVisible(sprite))
+                        sprite.Hide();
+                    else
+                        sprite.Show();
+                    },
+                () =>
+                    sprite.Show());
+            testRecurrentDelay.Begin();
+
         }
 
         /// <summary>

@@ -41,6 +41,7 @@ namespace EarthSpace.Processing.Processes
             currentTime += (float)gameTime.ElapsedGameTime.Milliseconds / 1000f;
             if (currentTime > delayTime)
             {
+                currentTime = 0;
                 End();
             }
         }
