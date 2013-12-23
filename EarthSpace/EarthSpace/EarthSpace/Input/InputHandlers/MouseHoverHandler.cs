@@ -1,8 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Input.InputHandlers
 {
@@ -11,7 +7,7 @@ namespace EarthSpace.Input.InputHandlers
     /// </summary>
     public class MouseHoverHandler : InputHandler
     {
-        Rectangle hoverArea;
+        private Rectangle hoverArea;
 
         /// <summary>
         /// Creates a MouseHoverHandler.

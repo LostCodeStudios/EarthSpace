@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using System.Collections.Generic;
 
 namespace EarthSpace.Graphics
 {
@@ -14,10 +11,10 @@ namespace EarthSpace.Graphics
     {
         #region Fields
 
-        static SpriteBatch spriteBatch;
-        static GraphicsDeviceManager graphics;
-        static GraphicsDevice graphicsDevice;
-        static HashSet<IDrawable> drawables = new HashSet<IDrawable>();
+        private static SpriteBatch spriteBatch;
+        private static GraphicsDeviceManager graphics;
+        private static GraphicsDevice graphicsDevice;
+        private static HashSet<IDrawable> drawables = new HashSet<IDrawable>();
 
         #endregion Fields
 
@@ -58,7 +55,7 @@ namespace EarthSpace.Graphics
             set;
         }
 
-        #endregion Viewport Properties
+        #endregion Graphics Properties
 
         #region Drawable Management
 
@@ -119,6 +116,6 @@ namespace EarthSpace.Graphics
             spriteBatch.End();
         }
 
-        #endregion
+        #endregion Rendering
     }
 }

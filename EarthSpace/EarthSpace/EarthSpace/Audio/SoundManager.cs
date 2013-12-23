@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Audio;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Audio
 {
@@ -11,8 +8,8 @@ namespace EarthSpace.Audio
     /// </summary>
     public static class SoundManager
     {
-        static Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>();
-        static float volume;
+        private static Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>();
+        private static float volume;
 
         /// <summary>
         /// The volume of the game's sound.
@@ -51,14 +48,4 @@ namespace EarthSpace.Audio
             sounds[key].Play(Volume * volume, pitch, pan);
         }
 
-        /// <summary>
-        /// Plays a sound effect.
-        /// </summary>
-        /// <param name="key"></param>
-        public static void PlaySound(string key)
-        {
-            PlaySound(key, 1f, 0f, 0f);
-        }
-        
     }
-}

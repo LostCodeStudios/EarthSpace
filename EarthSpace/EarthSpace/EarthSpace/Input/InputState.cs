@@ -1,9 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Input
 {
@@ -14,11 +10,11 @@ namespace EarthSpace.Input
     {
         #region Fields
 
-        KeyboardState keyState;
-        KeyboardState lastKeyState;
+        private KeyboardState keyState;
+        private KeyboardState lastKeyState;
 
-        MouseState mouseState;
-        MouseState lastMouseState;
+        private MouseState mouseState;
+        private MouseState lastMouseState;
 
         #endregion Fields
 
@@ -36,7 +32,7 @@ namespace EarthSpace.Input
             lastMouseState = mouseState;
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Properties
 
@@ -112,7 +108,7 @@ namespace EarthSpace.Input
             return keyState.IsKeyUp(key) && lastKeyState.IsKeyDown(key);
         }
 
-        #endregion
+        #endregion Keyboard Helpers
 
         #region Mouse Helpers
 
@@ -174,6 +170,6 @@ namespace EarthSpace.Input
             }
         }
 
-        #endregion
+        #endregion Mouse Helpers
     }
 }

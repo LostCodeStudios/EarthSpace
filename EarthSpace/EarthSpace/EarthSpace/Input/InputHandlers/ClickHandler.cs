@@ -1,8 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Input.InputHandlers
 {
@@ -22,10 +18,10 @@ namespace EarthSpace.Input.InputHandlers
     {
         #region Fields
 
-        MouseButton button;
-        Rectangle? clickArea;
+        private MouseButton button;
+        private Rectangle? clickArea;
 
-        #endregion
+        #endregion Fields
 
         #region Initialization
 
@@ -38,7 +34,7 @@ namespace EarthSpace.Input.InputHandlers
             this.button = button;
         }
 
-        #endregion
+        #endregion Initialization
 
         #region Properties
 
@@ -51,7 +47,7 @@ namespace EarthSpace.Input.InputHandlers
             set { clickArea = value; }
         }
 
-        #endregion
+        #endregion Properties
 
         #region InputHandler
 
@@ -83,6 +79,6 @@ namespace EarthSpace.Input.InputHandlers
             return clicked;
         }
 
-        #endregion
+        #endregion InputHandler
     }
 }

@@ -1,20 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using EarthSpace.Graphics;
-using EarthSpace.Graphics.Drawables;
-using EarthSpace.Processing;
 using EarthSpace.Input;
-using EarthSpace.Input.InputHandlers;
-using EarthSpace.Processing.Processes;
+using EarthSpace.Processing;
 using EarthSpace.UI;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace EarthSpace
 {
@@ -23,10 +12,10 @@ namespace EarthSpace
     /// </summary>
     public class Game1 : Microsoft.Xna.Framework.Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
-        Menu mainMenu;
+        private Menu mainMenu;
 
         public Game1()
         {

@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Input;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Input.InputHandlers
 {
@@ -13,9 +10,9 @@ namespace EarthSpace.Input.InputHandlers
     {
         #region Fields
 
-        List<Keys> keys = new List<Keys>();
+        private List<Keys> keys = new List<Keys>();
 
-        #endregion
+        #endregion Fields
 
         #region Initialization
 
@@ -31,7 +28,7 @@ namespace EarthSpace.Input.InputHandlers
             }
         }
 
-        #endregion
+        #endregion Initialization
 
         #region InputHandler
 
@@ -53,6 +50,6 @@ namespace EarthSpace.Input.InputHandlers
             return false;
         }
 
-        #endregion
+        #endregion InputHandler
     }
 }

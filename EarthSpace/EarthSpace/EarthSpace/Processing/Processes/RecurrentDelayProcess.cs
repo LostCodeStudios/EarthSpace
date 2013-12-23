@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace EarthSpace.Processing.Processes
 {
@@ -26,27 +23,29 @@ namespace EarthSpace.Processing.Processes
         }
 
         #region Fields
-        int currentOccurences = 0;
-        int occurences = 0;
-        Action onOccur;
+
+        private int currentOccurences = 0;
+        private int occurences = 0;
+        private Action onOccur;
+
         #endregion Fields
 
         #region Update
+
         /// <summary>
         /// Called on each occurrences based on the delay processes code.
         /// </summary>
-        public override void  End()
+        public override void End()
         {
             if (currentOccurences <= occurences || occurences == -1)
             {
                 currentOccurences++;
                 onOccur.Invoke();
-
             }
             else
                 base.End();
         }
 
-        #endregion Fields
+        #endregion Update
     }
 }
