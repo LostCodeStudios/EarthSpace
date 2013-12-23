@@ -22,12 +22,17 @@ namespace EarthSpace.UI
         Color titleColor = Color.Yellow;
         Color entryColor = Color.White;
         Color entryColorSelected = Color.Yellow;
+        Color entryColorDisabled = Color.Gray;
 
         Label titleLabel;
         List<Label> entryLabels = new List<Label>();
 
         int selectedIndex;
+        Sprite selectionSprite;
+        float spriteOffset;
+
         List<Action> entryActions = new List<Action>();
+        List<Int32> disabledEntries = new List<Int32>();
 
         Vector2 titlePosition = new Vector2(GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 5);
         Vector2 entryPosition = new Vector2(GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 3);
@@ -53,6 +58,8 @@ namespace EarthSpace.UI
             titleLabel.Text = title;
             titleLabel.Origin = titleLabel.MeasureText() / 2;
             titleLabel.Position = titlePosition;
+
+            selectionSprite = new Sprite();
 
             moveUp = new KeyPressHandler(Keys.Up);
             moveDown = new KeyPressHandler(Keys.Down);
@@ -107,6 +114,25 @@ namespace EarthSpace.UI
             }
         }
 
+        public Color EntryColorDisabled
+        {
+            get { return entryColorDisabled; }
+            set
+            {
+                entryColorDisabled = value;
+
+                foreach (Int16 index in disabledEntries)
+                {
+                    entryLabels[index].Color = value;
+                }
+            }
+        }
+
+        public Sprite SelectionSprite
+        {
+            get { return selectionSprite; }
+        }
+
         public bool AllowCancel
         {
             get { return allowCancel; }
@@ -120,6 +146,9 @@ namespace EarthSpace.UI
         public void Show()
         {
             titleLabel.Show();
+
+            PositionSprite();
+            selectionSprite.Show();
 
             foreach (Label entryLabel in entryLabels)
             {
@@ -139,6 +168,7 @@ namespace EarthSpace.UI
         public void Hide()
         {
             titleLabel.Hide();
+            selectionSprite.Hide();
 
             foreach (Label entryLabel in entryLabels)
             {
@@ -175,11 +205,34 @@ namespace EarthSpace.UI
 
             entryLabels.Add(entryLabel);
             entryActions.Add(onSelected);
+
+            if (entryLabel.MeasureText().X / 2 > spriteOffset)
+            {
+                spriteOffset = entryLabel.MeasureText().X / 2;
+            }
         }
 
         public void AddCancelEntry(string text)
         {
             AddEntry(text, OnCancel);
+        }
+
+        public void DisableEntry(int index)
+        {
+            if (!disabledEntries.Contains(index))
+            {
+                disabledEntries.Add(index);
+                entryLabels[index].Color = entryColorDisabled;
+            }
+        }
+
+        public void EnableEntry(int index)
+        {
+            if (disabledEntries.Contains(index))
+            {
+                disabledEntries.Remove(index);
+                entryLabels[index].Color = EntryColor;
+            }
         }
 
         #endregion Entry Management
@@ -188,11 +241,30 @@ namespace EarthSpace.UI
 
         private void SelectIndex(int index)
         {
-            entryLabels[selectedIndex].Color = entryColor;
+            if (!disabledEntries.Contains(selectedIndex))
+            {
+                entryLabels[selectedIndex].Color = entryColor;
+            }
             
             selectedIndex = index;
 
-            entryLabels[selectedIndex].Color = entryColorSelected;
+            PositionSprite();
+
+            if (!disabledEntries.Contains(selectedIndex))
+            {
+                entryLabels[selectedIndex].Color = entryColorSelected;
+            }
+        }
+
+        private void PositionSprite()
+        {
+            Vector2 spritePosition = entryLabels[selectedIndex].Position;
+            spritePosition.X -= spriteOffset;
+            spritePosition.X -= selectionSprite.Width;
+            spritePosition.Y -= selectionSprite.Height / 2;
+
+            selectionSprite.CenterOrigin();
+            selectionSprite.Position = spritePosition;
         }
 
         private void OnMoveUp(InputState input)
@@ -221,7 +293,7 @@ namespace EarthSpace.UI
 
         private void OnSelect(InputState input)
         {
-            if (entryActions[selectedIndex] != null)
+            if (entryActions[selectedIndex] != null && !disabledEntries.Contains(selectedIndex))
             {
                 entryActions[selectedIndex].Invoke();
             }

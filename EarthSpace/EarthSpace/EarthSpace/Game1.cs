@@ -68,6 +68,7 @@ namespace EarthSpace
 
             sprite = new Sprite();
             sprite.Texture = Content.Load<Texture2D>("spacepirate");
+            sprite.Scale = new Vector2(0.3f);
             sprite.Show();
 
             label = new Label();
@@ -106,6 +107,11 @@ namespace EarthSpace
             testMenu.AddEntry("Show Sprite", showSprite);
             testMenu.AddEntry("Hide Sprite", hideSprite);
             testMenu.AddCancelEntry("Exit");
+            testMenu.DisableEntry(0);
+
+            Sprite menuSprite = new Sprite();
+            testMenu.SelectionSprite.Texture = Content.Load<Texture2D>("spacepirate");
+            testMenu.SelectionSprite.Scale = new Vector2(0.1f);
 
             testMenu.Show();
         }
@@ -174,11 +180,15 @@ namespace EarthSpace
         void hideSprite()
         {
             sprite.Hide();
+            testMenu.DisableEntry(1);
+            testMenu.EnableEntry(0);
         }
 
         void showSprite()
         {
             sprite.Show();
+            testMenu.DisableEntry(0);
+            testMenu.EnableEntry(1);
         }
     }
 }

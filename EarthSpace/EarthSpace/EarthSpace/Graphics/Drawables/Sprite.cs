@@ -130,5 +130,63 @@ namespace EarthSpace.Graphics.Drawables
         }
 
         #endregion IDrawable
+
+        #region Helpers
+
+        /// <summary>
+        /// The width of this sprite.
+        /// </summary>
+        public int Width
+        {
+            get
+            {
+                int width;
+
+                if (Source.HasValue)
+                {
+                    width = Source.Value.Width;
+                }
+                else
+                {
+                    width = Texture.Width;
+                }
+
+                width = (int)(width * Scale.X);
+                return width;
+            }
+        }
+
+        /// <summary>
+        /// The height of this sprite.
+        /// </summary>
+        public int Height
+        {
+            get
+            {
+                int height;
+
+                if (Source.HasValue)
+                {
+                    height = Source.Value.Height;
+                }
+                else
+                {
+                    height = Texture.Height;
+                }
+
+                height = (int)(height * Scale.Y);
+                return height;
+            }
+        }
+
+        /// <summary>
+        /// Centers this sprite's origin.
+        /// </summary>
+        public void CenterOrigin()
+        {
+            Origin = new Vector2(Width / 2, Height / 2);
+        }
+
+        #endregion
     }
 }
