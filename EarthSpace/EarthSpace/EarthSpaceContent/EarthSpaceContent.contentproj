@@ -42,28 +42,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="spacepirate.png">
-      <Name>spacepirate</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="font.spritefont">
-      <Name>font</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="sprites.png">
+    <Compile Include="Textures\sprites.png">
       <Name>sprites</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="darkII.spritefont">
+    <Compile Include="Fonts\darkII.spritefont">
       <Name>darkII</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
@@ -76,7 +62,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="sword.png">
+    <Compile Include="Textures\sword.png">
       <Name>sword</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
