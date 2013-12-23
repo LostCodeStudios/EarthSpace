@@ -82,7 +82,7 @@ namespace EarthSpace.Processing.Processes
         /// <summary>
         /// The regression delegate for tweens of all sorts.
         /// </summary>
-        protected delegate float Regression(float start, float end, float range, float x);
+        public delegate float Regression(float start, float end, float range, float x);
 
         /// <summary>
         /// The linear tween for transitions between two points.

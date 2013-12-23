@@ -30,6 +30,6 @@ namespace EarthSpace.Audio
             sounds[key].Play(Volume * volume, pitch, pan);
         }
 
-        public static
+        //public static
     }
 }
