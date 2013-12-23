@@ -14,6 +14,7 @@ using EarthSpace.Processing;
 using EarthSpace.Input;
 using EarthSpace.Input.InputHandlers;
 using EarthSpace.Processing.Processes;
+using EarthSpace.UI;
 
 namespace EarthSpace
 {
@@ -30,6 +31,8 @@ namespace EarthSpace
 
         ClickHandler clickHandler;
         KeyPressHandler keyHandler;
+
+        Menu testMenu;
 
         public Game1()
         {
@@ -65,25 +68,26 @@ namespace EarthSpace
 
             sprite = new Sprite();
             sprite.Texture = Content.Load<Texture2D>("spacepirate");
+            sprite.Scale = new Vector2(0.3f);
             sprite.Show();
 
             label = new Label();
             label.Text = "Earth Space";
             label.Font = Content.Load<SpriteFont>("font");
-            label.Show();
+            //label.Show();
 
             clickHandler = new ClickHandler(MouseButton.Right);
             clickHandler.ClickArea = new Rectangle(0, 0, GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 2);
             clickHandler.OnTrigger += onClick;
-            clickHandler.Enable();
+            //clickHandler.Enable();
 
             keyHandler = new KeyPressHandler(Keys.Space);
             keyHandler.OnTrigger += onSpace;
-            keyHandler.Enable();
+            //keyHandler.Enable();
 
             DelayProcess testDelay = new DelayProcess(10,
                 () => sprite.Hide());
-            testDelay.Begin();
+            //testDelay.Begin();
 
             RecurrentDelayProcess testRecurrentDelay = new RecurrentDelayProcess(0.5f,
                 () => {
@@ -94,8 +98,22 @@ namespace EarthSpace
                     },
                 () =>
                     sprite.Show());
-            testRecurrentDelay.Begin();
+            //testRecurrentDelay.Begin();
 
+            SpriteFont font = Content.Load<SpriteFont>("font");
+
+            testMenu = new Menu("Earth Space", font, font);
+
+            testMenu.AddEntry("Show Sprite", showSprite);
+            testMenu.AddEntry("Hide Sprite", hideSprite);
+            testMenu.AddCancelEntry("Exit");
+            testMenu.DisableEntry(0);
+
+            Sprite menuSprite = new Sprite();
+            testMenu.SelectionSprite.Texture = Content.Load<Texture2D>("spacepirate");
+            testMenu.SelectionSprite.Scale = new Vector2(0.1f);
+
+            testMenu.Show();
         }
 
         /// <summary>
@@ -157,6 +175,20 @@ namespace EarthSpace
                 sprite.Show();
                 clickHandler.Enable();
             }
+        }
+
+        void hideSprite()
+        {
+            sprite.Hide();
+            testMenu.DisableEntry(1);
+            testMenu.EnableEntry(0);
+        }
+
+        void showSprite()
+        {
+            sprite.Show();
+            testMenu.DisableEntry(0);
+            testMenu.EnableEntry(1);
         }
     }
 }
