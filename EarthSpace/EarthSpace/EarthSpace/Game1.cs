@@ -26,13 +26,7 @@ namespace EarthSpace
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Sprite sprite;
-        Label label;
-
-        ClickHandler clickHandler;
-        KeyPressHandler keyHandler;
-
-        Menu testMenu;
+        Menu mainMenu;
 
         public Game1()
         {
@@ -64,56 +58,21 @@ namespace EarthSpace
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             GraphicsManager.Initialize(spriteBatch, graphics);
+            GraphicsManager.BackgroundColor = Color.Black;
             InputManager.Initialize();
 
-            sprite = new Sprite();
-            sprite.Texture = Content.Load<Texture2D>("spacepirate");
-            sprite.Scale = new Vector2(0.3f);
-            sprite.Show();
+            SpriteFont font = Content.Load<SpriteFont>("darkII");
 
-            label = new Label();
-            label.Text = "Earth Space";
-            label.Font = Content.Load<SpriteFont>("font");
-            //label.Show();
+            mainMenu = new Menu("Earth Space", font, font);
+            mainMenu.TitleColor = Color.White;
+            mainMenu.EntryColor = Color.White;
+            mainMenu.EntryColorSelected = Color.Red;
+            mainMenu.SelectionSprite.Texture = Content.Load<Texture2D>("sword");
 
-            clickHandler = new ClickHandler(MouseButton.Right);
-            clickHandler.ClickArea = new Rectangle(0, 0, GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 2);
-            clickHandler.OnTrigger += onClick;
-            //clickHandler.Enable();
+            mainMenu.AddEntry("Play", null);
+            mainMenu.AddEntry("Exit", OnQuit);
 
-            keyHandler = new KeyPressHandler(Keys.Space);
-            keyHandler.OnTrigger += onSpace;
-            //keyHandler.Enable();
-
-            DelayProcess testDelay = new DelayProcess(10,
-                () => sprite.Hide());
-            //testDelay.Begin();
-
-            RecurrentDelayProcess testRecurrentDelay = new RecurrentDelayProcess(0.5f,
-                () => {
-                    if(GraphicsManager.IsVisible(sprite))
-                        sprite.Hide();
-                    else
-                        sprite.Show();
-                    },
-                () =>
-                    sprite.Show());
-            //testRecurrentDelay.Begin();
-
-            SpriteFont font = Content.Load<SpriteFont>("font");
-
-            testMenu = new Menu("Earth Space", font, font);
-
-            testMenu.AddEntry("Show Sprite", showSprite);
-            testMenu.AddEntry("Hide Sprite", hideSprite);
-            testMenu.AddCancelEntry("Exit");
-            testMenu.DisableEntry(0);
-
-            Sprite menuSprite = new Sprite();
-            testMenu.SelectionSprite.Texture = Content.Load<Texture2D>("spacepirate");
-            testMenu.SelectionSprite.Scale = new Vector2(0.1f);
-
-            testMenu.Show();
+            mainMenu.Show();
         }
 
         /// <summary>
@@ -149,46 +108,9 @@ namespace EarthSpace
             base.Draw(gameTime);
         }
 
-        void onClick(InputState input)
+        private void OnQuit()
         {
-            if (GraphicsManager.IsVisible(sprite))
-            {
-                sprite.Hide();
-                keyHandler.Disable();
-            }
-            else
-            {
-                sprite.Show();
-                keyHandler.Enable();
-            }
-        }
-
-        void onSpace(InputState input)
-        {
-            if (GraphicsManager.IsVisible(sprite))
-            {
-                sprite.Hide();
-                clickHandler.Disable();
-            }
-            else
-            {
-                sprite.Show();
-                clickHandler.Enable();
-            }
-        }
-
-        void hideSprite()
-        {
-            sprite.Hide();
-            testMenu.DisableEntry(1);
-            testMenu.EnableEntry(0);
-        }
-
-        void showSprite()
-        {
-            sprite.Show();
-            testMenu.DisableEntry(0);
-            testMenu.EnableEntry(1);
+            this.Exit();
         }
     }
 }

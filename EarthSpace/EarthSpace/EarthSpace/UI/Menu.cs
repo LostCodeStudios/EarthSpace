@@ -43,6 +43,9 @@ namespace EarthSpace.UI
         InputHandler moveDown;
         InputHandler select;
         InputHandler cancel;
+        InputHandler clickSelect;
+        List<InputHandler> hoverHandlers = new List<InputHandler>();
+
 
         #endregion Fields
 
@@ -65,11 +68,13 @@ namespace EarthSpace.UI
             moveDown = new KeyPressHandler(Keys.Down);
             select = new KeyPressHandler(Keys.Space, Keys.Enter);
             cancel = new KeyPressHandler(Keys.Escape);
+            clickSelect = new ClickHandler(MouseButton.Left);
 
             moveUp.OnTrigger += OnMoveUp;
             moveDown.OnTrigger += OnMoveDown;
             select.OnTrigger += OnSelect;
             cancel.OnTrigger += OnCancel;
+            clickSelect.OnTrigger += OnSelect;
         }
 
         #endregion
@@ -110,7 +115,10 @@ namespace EarthSpace.UI
             {
                 entryColorSelected = value;
 
-                entryLabels[selectedIndex].Color = value;
+                if (selectedIndex < entryLabels.Count())
+                {
+                    entryLabels[selectedIndex].Color = value;
+                }
             }
         }
 
@@ -159,6 +167,12 @@ namespace EarthSpace.UI
             moveDown.Enable();
             select.Enable();
             if (allowCancel) cancel.Enable();
+            clickSelect.Enable();
+
+            foreach (InputHandler handler in hoverHandlers)
+            {
+                handler.Enable();
+            }
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -179,6 +193,12 @@ namespace EarthSpace.UI
             moveDown.Disable();
             select.Disable();
             if (allowCancel) cancel.Disable();
+            clickSelect.Disable();
+            
+            foreach (InputHandler handler in hoverHandlers)
+            {
+                handler.Disable();
+            }
         }
 
         #endregion IDrawable
@@ -203,6 +223,7 @@ namespace EarthSpace.UI
             entryLabel.Origin = entryLabel.MeasureText() / 2;
             entryLabel.Position = NextPosition(entryLabel);
 
+            int index = entryLabels.Count();
             entryLabels.Add(entryLabel);
             entryActions.Add(onSelected);
 
@@ -210,6 +231,13 @@ namespace EarthSpace.UI
             {
                 spriteOffset = entryLabel.MeasureText().X / 2;
             }
+
+            MouseHoverHandler handler = new MouseHoverHandler(entryLabel.ScreenArea());
+            handler.OnTrigger += (input) =>
+            {
+                SelectIndex(index);
+            };
+            hoverHandlers.Add(handler);
         }
 
         public void AddCancelEntry(string text)
@@ -247,6 +275,7 @@ namespace EarthSpace.UI
             }
             
             selectedIndex = index;
+            (clickSelect as ClickHandler).ClickArea = entryLabels[selectedIndex].ScreenArea();
 
             PositionSprite();
 
@@ -260,8 +289,8 @@ namespace EarthSpace.UI
         {
             Vector2 spritePosition = entryLabels[selectedIndex].Position;
             spritePosition.X -= spriteOffset;
-            spritePosition.X -= selectionSprite.Width;
-            spritePosition.Y -= selectionSprite.Height / 2;
+            spritePosition.X -= selectionSprite.Width / 2;
+            //spritePosition.Y -= selectionSprite.Height / 2;
 
             selectionSprite.CenterOrigin();
             selectionSprite.Position = spritePosition;

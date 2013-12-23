@@ -142,6 +142,20 @@ namespace EarthSpace.Graphics.Drawables
             return Font.MeasureString(Text) * Scale;
         }
 
+        /// <summary>
+        /// Returns a Rectangle representing this label's screen rectangle.
+        /// </summary>
+        /// <returns></returns>
+        public Rectangle ScreenArea()
+        {
+            Vector2 size = MeasureText();
+
+            return new Rectangle(
+                (int)(Position.X - size.X / 2),
+                (int)(Position.Y - size.Y / 2),
+                (int)size.X, (int)size.Y);
+        }
+
         #endregion
     }
 }
