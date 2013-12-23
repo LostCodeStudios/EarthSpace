@@ -109,7 +109,7 @@ namespace EarthSpace.Graphics
         {
             graphicsDevice.Clear(BackgroundColor);
 
-            spriteBatch.Begin();
+            spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend);
 
             foreach (IDrawable drawable in drawables)
             {

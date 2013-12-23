@@ -34,6 +34,9 @@ namespace EarthSpace
 
         Menu testMenu;
 
+        Animation testAnimation;
+        Animation testAnimation2;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -69,7 +72,7 @@ namespace EarthSpace
             sprite = new Sprite();
             sprite.Texture = Content.Load<Texture2D>("spacepirate");
             sprite.Scale = new Vector2(0.3f);
-            sprite.Show();
+            //sprite.Show();
 
             label = new Label();
             label.Text = "Earth Space";
@@ -104,8 +107,8 @@ namespace EarthSpace
 
             testMenu = new Menu("Earth Space", font, font);
 
-            testMenu.AddEntry("Show Sprite", showSprite);
-            testMenu.AddEntry("Hide Sprite", hideSprite);
+            testMenu.AddEntry("Start Sprite", showSprite);
+            testMenu.AddEntry("Stop Sprite", hideSprite);
             testMenu.AllowCancel = true;
             testMenu.AddCancelEntry("Exit");
             testMenu.DisableEntry(0);
@@ -115,6 +118,18 @@ namespace EarthSpace
             testMenu.SelectionSprite.Scale = new Vector2(0.1f);
 
             testMenu.Show();
+
+            testAnimation = new Animation(Content.Load<Texture2D>("sprites"), 0.3f, new Rectangle(48, 0, 32, 16), 2, 1);
+            testAnimation.Show();
+            testAnimation.Begin();
+            testAnimation.Scale = new Vector2(5);
+            testAnimation.LayerDepth = 1f;
+
+            testAnimation2 = new Animation(Content.Load<Texture2D>("sprites"), 0.3f, new Rectangle(48, 16, 32, 16), 2, 1);
+            testAnimation2.Show();
+            testAnimation2.Begin();
+            testAnimation2.Scale = new Vector2(5);
+            testAnimation2.LayerDepth = 0.7f;
         }
 
         /// <summary>
@@ -180,14 +195,16 @@ namespace EarthSpace
 
         void hideSprite()
         {
-            sprite.Hide();
+            testAnimation.End();
+            testAnimation2.End();
             testMenu.DisableEntry(1);
             testMenu.EnableEntry(0);
         }
 
         void showSprite()
         {
-            sprite.Show();
+            testAnimation.Begin();
+            testAnimation2.Begin();
             testMenu.DisableEntry(0);
             testMenu.EnableEntry(1);
         }
