@@ -63,9 +63,24 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="darkII.spritefont">
+      <Name>darkII</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
     <None Include="sprites.xcf">
       <Name>sprites</Name>
     </None>
+    <None Include="sword.xcf">
+      <Name>sword</Name>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="sword.png">
+      <Name>sword</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

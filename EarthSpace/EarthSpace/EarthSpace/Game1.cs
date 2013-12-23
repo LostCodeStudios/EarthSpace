@@ -67,6 +67,7 @@ namespace EarthSpace
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             GraphicsManager.Initialize(spriteBatch, graphics);
+            GraphicsManager.BackgroundColor = Color.Black;
             InputManager.Initialize();
 
             sprite = new Sprite();
@@ -103,19 +104,20 @@ namespace EarthSpace
                     sprite.Show());
             //testRecurrentDelay.Begin();
 
-            SpriteFont font = Content.Load<SpriteFont>("font");
+            SpriteFont font = Content.Load<SpriteFont>("darkII");
 
             testMenu = new Menu("Earth Space", font, font);
+            testMenu.TitleColor = Color.White;
+            testMenu.EntryColor = Color.White;
+            testMenu.EntryColorSelected = Color.Red;
 
             testMenu.AddEntry("Start Sprite", showSprite);
             testMenu.AddEntry("Stop Sprite", hideSprite);
-            testMenu.AllowCancel = true;
-            testMenu.AddCancelEntry("Exit");
+            testMenu.AddEntry("Exit", OnQuit);
             testMenu.DisableEntry(0);
 
             Sprite menuSprite = new Sprite();
-            testMenu.SelectionSprite.Texture = Content.Load<Texture2D>("spacepirate");
-            testMenu.SelectionSprite.Scale = new Vector2(0.1f);
+            testMenu.SelectionSprite.Texture = Content.Load<Texture2D>("sword");
 
             testMenu.Show();
 
@@ -207,6 +209,11 @@ namespace EarthSpace
             testAnimation2.Begin();
             testMenu.DisableEntry(0);
             testMenu.EnableEntry(1);
+        }
+
+        void OnQuit()
+        {
+            this.Exit();
         }
     }
 }

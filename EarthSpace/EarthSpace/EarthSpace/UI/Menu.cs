@@ -115,7 +115,10 @@ namespace EarthSpace.UI
             {
                 entryColorSelected = value;
 
-                entryLabels[selectedIndex].Color = value;
+                if (selectedIndex < entryLabels.Count())
+                {
+                    entryLabels[selectedIndex].Color = value;
+                }
             }
         }
 
@@ -286,8 +289,8 @@ namespace EarthSpace.UI
         {
             Vector2 spritePosition = entryLabels[selectedIndex].Position;
             spritePosition.X -= spriteOffset;
-            spritePosition.X -= selectionSprite.Width;
-            spritePosition.Y -= selectionSprite.Height / 2;
+            spritePosition.X -= selectionSprite.Width / 2;
+            //spritePosition.Y -= selectionSprite.Height / 2;
 
             selectionSprite.CenterOrigin();
             selectionSprite.Position = spritePosition;
