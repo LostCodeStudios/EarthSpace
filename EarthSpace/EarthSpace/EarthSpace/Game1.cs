@@ -26,16 +26,7 @@ namespace EarthSpace
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
-        Sprite sprite;
-        Label label;
-
-        ClickHandler clickHandler;
-        KeyPressHandler keyHandler;
-
-        Menu testMenu;
-
-        Animation testAnimation;
-        Animation testAnimation2;
+        Menu mainMenu;
 
         public Game1()
         {
@@ -70,68 +61,18 @@ namespace EarthSpace
             GraphicsManager.BackgroundColor = Color.Black;
             InputManager.Initialize();
 
-            sprite = new Sprite();
-            sprite.Texture = Content.Load<Texture2D>("spacepirate");
-            sprite.Scale = new Vector2(0.3f);
-            //sprite.Show();
-
-            label = new Label();
-            label.Text = "Earth Space";
-            label.Font = Content.Load<SpriteFont>("font");
-            //label.Show();
-
-            clickHandler = new ClickHandler(MouseButton.Right);
-            clickHandler.ClickArea = new Rectangle(0, 0, GraphicsManager.Viewport.Width / 2, GraphicsManager.Viewport.Height / 2);
-            clickHandler.OnTrigger += onClick;
-            //clickHandler.Enable();
-
-            keyHandler = new KeyPressHandler(Keys.Space);
-            keyHandler.OnTrigger += onSpace;
-            //keyHandler.Enable();
-
-            DelayProcess testDelay = new DelayProcess(10,
-                () => sprite.Hide());
-            //testDelay.Begin();
-
-            RecurrentDelayProcess testRecurrentDelay = new RecurrentDelayProcess(0.5f,
-                () => {
-                    if(GraphicsManager.IsVisible(sprite))
-                        sprite.Hide();
-                    else
-                        sprite.Show();
-                    },
-                () =>
-                    sprite.Show());
-            //testRecurrentDelay.Begin();
-
             SpriteFont font = Content.Load<SpriteFont>("darkII");
 
-            testMenu = new Menu("Earth Space", font, font);
-            testMenu.TitleColor = Color.White;
-            testMenu.EntryColor = Color.White;
-            testMenu.EntryColorSelected = Color.Red;
+            mainMenu = new Menu("Earth Space", font, font);
+            mainMenu.TitleColor = Color.White;
+            mainMenu.EntryColor = Color.White;
+            mainMenu.EntryColorSelected = Color.Red;
+            mainMenu.SelectionSprite.Texture = Content.Load<Texture2D>("sword");
 
-            testMenu.AddEntry("Start Sprite", showSprite);
-            testMenu.AddEntry("Stop Sprite", hideSprite);
-            testMenu.AddEntry("Exit", OnQuit);
-            testMenu.DisableEntry(0);
+            mainMenu.AddEntry("Play", null);
+            mainMenu.AddEntry("Exit", OnQuit);
 
-            Sprite menuSprite = new Sprite();
-            testMenu.SelectionSprite.Texture = Content.Load<Texture2D>("sword");
-
-            testMenu.Show();
-
-            testAnimation = new Animation(Content.Load<Texture2D>("sprites"), 0.3f, new Rectangle(48, 0, 32, 16), 2, 1);
-            testAnimation.Show();
-            testAnimation.Begin();
-            testAnimation.Scale = new Vector2(5);
-            testAnimation.LayerDepth = 1f;
-
-            testAnimation2 = new Animation(Content.Load<Texture2D>("sprites"), 0.3f, new Rectangle(48, 16, 32, 16), 2, 1);
-            testAnimation2.Show();
-            testAnimation2.Begin();
-            testAnimation2.Scale = new Vector2(5);
-            testAnimation2.LayerDepth = 0.7f;
+            mainMenu.Show();
         }
 
         /// <summary>
@@ -167,51 +108,7 @@ namespace EarthSpace
             base.Draw(gameTime);
         }
 
-        void onClick(InputState input)
-        {
-            if (GraphicsManager.IsVisible(sprite))
-            {
-                sprite.Hide();
-                keyHandler.Disable();
-            }
-            else
-            {
-                sprite.Show();
-                keyHandler.Enable();
-            }
-        }
-
-        void onSpace(InputState input)
-        {
-            if (GraphicsManager.IsVisible(sprite))
-            {
-                sprite.Hide();
-                clickHandler.Disable();
-            }
-            else
-            {
-                sprite.Show();
-                clickHandler.Enable();
-            }
-        }
-
-        void hideSprite()
-        {
-            testAnimation.End();
-            testAnimation2.End();
-            testMenu.DisableEntry(1);
-            testMenu.EnableEntry(0);
-        }
-
-        void showSprite()
-        {
-            testAnimation.Begin();
-            testAnimation2.Begin();
-            testMenu.DisableEntry(0);
-            testMenu.EnableEntry(1);
-        }
-
-        void OnQuit()
+        private void OnQuit()
         {
             this.Exit();
         }
