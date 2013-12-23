@@ -13,6 +13,7 @@ using EarthSpace.Graphics.Drawables;
 using EarthSpace.Processing;
 using EarthSpace.Input;
 using EarthSpace.Input.InputHandlers;
+using EarthSpace.Processing.Processes;
 
 namespace EarthSpace
 {
@@ -79,6 +80,11 @@ namespace EarthSpace
             keyHandler = new KeyPressHandler(Keys.Space);
             keyHandler.OnTrigger += onSpace;
             keyHandler.Enable();
+
+            DelayProcess testDelay = new DelayProcess(10,
+                () => sprite.Hide());
+            testDelay.Begin();
+
         }
 
         /// <summary>
