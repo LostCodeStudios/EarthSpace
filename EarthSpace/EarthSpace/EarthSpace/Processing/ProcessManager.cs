@@ -65,9 +65,9 @@ namespace EarthSpace.Processing
         /// <param name="gameTime"></param>
         public static void Update(GameTime gameTime)
         {
-            foreach (IProcess process in processes)
+            for (int i = 0; i < processes.Count; i++ )
             {
-                process.Update(gameTime);
+                processes.ElementAt(i).Update(gameTime);
             }
         }
 
