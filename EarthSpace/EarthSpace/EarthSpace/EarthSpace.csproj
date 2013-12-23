@@ -115,6 +115,7 @@
     <Compile Include="Input\InputHandlers\ClickHandler.cs" />
     <Compile Include="Input\InputHandlers\KeyPressHandler.cs" />
     <Compile Include="Input\InputHandlers\KeyReleaseHandler.cs" />
+    <Compile Include="Input\InputHandlers\MouseHoverHandler.cs" />
     <Compile Include="Input\InputManager.cs" />
     <Compile Include="Input\InputState.cs" />
     <Compile Include="Processing\IProcess.cs" />

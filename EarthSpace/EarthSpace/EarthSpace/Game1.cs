@@ -106,6 +106,7 @@ namespace EarthSpace
 
             testMenu.AddEntry("Show Sprite", showSprite);
             testMenu.AddEntry("Hide Sprite", hideSprite);
+            testMenu.AllowCancel = true;
             testMenu.AddCancelEntry("Exit");
             testMenu.DisableEntry(0);
 

@@ -163,6 +163,17 @@ namespace EarthSpace.Input
             }
         }
 
+        /// <summary>
+        /// The previous position of the mouse.
+        /// </summary>
+        public Point LastMousePosition
+        {
+            get
+            {
+                return new Point(lastMouseState.X, lastMouseState.Y);
+            }
+        }
+
         #endregion
     }
 }
