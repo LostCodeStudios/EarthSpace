@@ -130,5 +130,18 @@ namespace EarthSpace.Graphics.Drawables
         }
 
         #endregion
+
+        #region Helpers
+
+        /// <summary>
+        /// Returns the measurements of this label's text.
+        /// </summary>
+        /// <returns></returns>
+        public Vector2 MeasureText()
+        {
+            return Font.MeasureString(Text) * Scale;
+        }
+
+        #endregion
     }
 }
