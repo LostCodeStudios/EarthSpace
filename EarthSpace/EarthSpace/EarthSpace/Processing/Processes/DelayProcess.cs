@@ -38,7 +38,7 @@ namespace EarthSpace.Processing.Processes
         /// <param name="gameTime"></param>
         public void Update(Microsoft.Xna.Framework.GameTime gameTime)
         {
-            currentTime += gameTime.ElapsedGameTime.Seconds;
+            currentTime += (float)gameTime.ElapsedGameTime.Milliseconds / 1000f;
             if (currentTime > delayTime)
             {
                 End();
