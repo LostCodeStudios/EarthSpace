@@ -33,6 +33,8 @@ namespace EarthSpace.Graphics.Drawables
 
             this.frameTime = frameTime;
             this.frames = frames;
+
+            sprite.Source = frames[0];
         }
 
         /// <summary>
@@ -70,6 +72,7 @@ namespace EarthSpace.Graphics.Drawables
             }
 
             this.frames = frames.ToArray();
+            sprite.Source = frames[0];
         }
 
         /// <summary>
@@ -206,7 +209,47 @@ namespace EarthSpace.Graphics.Drawables
         {
             ProcessManager.Remove(this);
         }
+        
+        /// <summary>
+        /// Resets the animation.
+        /// </summary>
+        public void Reset()
+        {
+            elapsedTime = 0f;
+
+            currentFrame = 0;
+
+            sprite.Source = frames[0];
+        }
 
         #endregion IProcess
+
+        #region Helpers
+
+        /// <summary>
+        /// The width of this sprite.
+        /// </summary>
+        public int Width
+        {
+            get { return (int)(sprite.Source.Value.Width * Scale.X); }
+        }
+
+        /// <summary>
+        /// The height of this sprite.
+        /// </summary>
+        public int Height
+        {
+            get { return (int)(sprite.Source.Value.Height * Scale.Y); }
+        }
+
+        /// <summary>
+        /// Centers this sprite's origin.
+        /// </summary>
+        public void CenterOrigin()
+        {
+            Origin = new Vector2(Width / Scale.X / 2, Height / Scale.Y / 2);
+        }
+
+        #endregion Helpers
     }
 }

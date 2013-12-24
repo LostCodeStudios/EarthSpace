@@ -1,3 +1,4 @@
+using EarthSpace.Gameplay;
 using EarthSpace.Graphics;
 using EarthSpace.Input;
 using EarthSpace.Processing;
@@ -16,6 +17,8 @@ namespace EarthSpace
         private SpriteBatch spriteBatch;
 
         private Menu mainMenu;
+
+        private GameplayScreen gameplayScreen;
 
         public Game1()
         {
@@ -58,7 +61,7 @@ namespace EarthSpace
             mainMenu.EntryColorSelected = Color.Red;
             mainMenu.SelectionSprite.Texture = Content.Load<Texture2D>("Textures/sword");
 
-            mainMenu.AddEntry("Play", null);
+            mainMenu.AddEntry("Play", OnPlay);
             mainMenu.AddEntry("Exit", OnQuit);
 
             mainMenu.Show();
@@ -95,6 +98,15 @@ namespace EarthSpace
             GraphicsManager.Draw();
 
             base.Draw(gameTime);
+        }
+
+        private void OnPlay()
+        {
+            gameplayScreen = new GameplayScreen();
+            gameplayScreen.LoadContent(Content);
+
+            mainMenu.Hide();
+            gameplayScreen.Show();
         }
 
         private void OnQuit()

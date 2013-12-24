@@ -180,7 +180,7 @@ namespace EarthSpace.Graphics.Drawables
         /// </summary>
         public void CenterOrigin()
         {
-            Origin = new Vector2(Width / 2, Height / 2);
+            Origin = new Vector2(Width / Scale.X / 2, Height / Scale.Y / 2);
         }
 
         #endregion Helpers

@@ -9,7 +9,7 @@ namespace EarthSpace.Audio
     public static class SoundManager
     {
         private static Dictionary<string, SoundEffect> sounds = new Dictionary<string, SoundEffect>();
-        private static float volume;
+        private static float volume = 1f;
 
         /// <summary>
         /// The volume of the game's sound.
@@ -46,6 +46,25 @@ namespace EarthSpace.Audio
         public static void PlaySound(string key, float volume, float pitch, float pan)
         {
             sounds[key].Play(Volume * volume, pitch, pan);
+        }
+
+        /// <summary>
+        /// Plays a sound effect.
+        /// </summary>
+        /// <param name="key"></param>
+        /// <param name="volume"></param>
+        public static void PlaySound(string key, float volume)
+        {
+            sounds[key].Play(Volume * volume, 0f, 0f);
+        }
+        
+        /// <summary>
+        /// Plays a sound effect.
+        /// </summary>
+        /// <param name="key"></param>
+        public static void PlaySound(string key)
+        {
+            sounds[key].Play(Volume, 0f, 0f);
         }
 
     }
