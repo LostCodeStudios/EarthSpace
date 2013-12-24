@@ -117,5 +117,8 @@ namespace EarthSpace.Processing.Processes
             };
 
         #endregion 'Tweenyboppers'
+
+
+        //TODO: MAKE A VECTOR BASED TRANSITION PROCESS/REGRESSION.
     }
 }

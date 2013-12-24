@@ -61,11 +61,6 @@ namespace EarthSpace.UI
             titleLabel.Origin = titleLabel.MeasureText() / 2;
             titleLabel.Position = titlePosition;
 
-            TransitionProcess titleMove = new TransitionProcess(
-                TransitionProcess.SmoothStep, -150, titlePosition.X, 1.5f,
-                (x) => titleLabel.Position = new Vector2(x, titlePosition.Y));
-            titleMove.Begin();
-
             selectionSprite = new Sprite();
 
             moveUp = new KeyPressHandler(Keys.Up);
@@ -285,7 +280,15 @@ namespace EarthSpace.UI
 
             if (!disabledEntries.Contains(selectedIndex))
             {
-                entryLabels[selectedIndex].Color = entryColorSelected;
+                TransitionProcess colorChange = new TransitionProcess(
+                    TransitionProcess.SmoothStep, 0, 1, 0.5f,
+                    (x) => 
+                    {
+                        Vector3 color = ((entryColorSelected.ToVector3() - entryColor.ToVector3()) * x) + entryColor.ToVector3();
+                        entryLabels[selectedIndex].Color = new Color(color);
+                    });
+                colorChange.Begin(); 
+                
             }
         }
 
