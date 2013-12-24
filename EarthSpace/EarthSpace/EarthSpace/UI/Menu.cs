@@ -2,6 +2,7 @@
 using EarthSpace.Graphics.Drawables;
 using EarthSpace.Input;
 using EarthSpace.Input.InputHandlers;
+using EarthSpace.Processing.Processes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -279,7 +280,15 @@ namespace EarthSpace.UI
 
             if (!disabledEntries.Contains(selectedIndex))
             {
-                entryLabels[selectedIndex].Color = entryColorSelected;
+                TransitionProcess colorChange = new TransitionProcess(
+                    TransitionProcess.SmoothStep, 0, 1, 0.5f,
+                    (x) => 
+                    {
+                        Vector3 color = ((entryColorSelected.ToVector3() - entryColor.ToVector3()) * x) + entryColor.ToVector3();
+                        entryLabels[selectedIndex].Color = new Color(color);
+                    });
+                colorChange.Begin(); 
+                
             }
         }
 

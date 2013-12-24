@@ -47,7 +47,6 @@ namespace EarthSpace.Audio
         {
             sounds[key].Play(Volume * volume, pitch, pan);
         }
-
         /// <summary>
         /// Plays a sound effect.
         /// </summary>

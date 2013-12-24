@@ -65,6 +65,8 @@ namespace EarthSpace
             mainMenu.AddEntry("Exit", OnQuit);
 
             mainMenu.Show();
+        
+
         }
 
         /// <summary>
