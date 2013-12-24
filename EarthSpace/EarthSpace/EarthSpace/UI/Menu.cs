@@ -62,10 +62,9 @@ namespace EarthSpace.UI
             titleLabel.Position = titlePosition;
 
             TransitionProcess titleMove = new TransitionProcess(
-                TransitionProcess.SmoothStep, -150 , titlePosition.X, 1.5f,
+                TransitionProcess.SmoothStep, -150, titlePosition.X, 1.5f,
                 (x) => titleLabel.Position = new Vector2(x, titlePosition.Y));
             titleMove.Begin();
-
 
             selectionSprite = new Sprite();
 

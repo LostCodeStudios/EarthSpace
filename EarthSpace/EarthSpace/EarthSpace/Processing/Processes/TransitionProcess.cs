@@ -57,7 +57,7 @@ namespace EarthSpace.Processing.Processes
         /// </summary>
         public void End()
         {
-            if(onEnd != null)
+            if (onEnd != null)
                 onEnd();
             ProcessManager.Remove(this);
         }
@@ -99,7 +99,7 @@ namespace EarthSpace.Processing.Processes
             (start, end, domain, x) =>
             {
                 float range = (float)Math.Abs(end - start);
-                float eval = 1 * (float)Math.Pow((range +1) / 1, x / domain);
+                float eval = 1 * (float)Math.Pow((range + 1) / 1, x / domain);
                 return eval - 1 + start;
             };
 
