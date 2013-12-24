@@ -2,6 +2,7 @@
 using EarthSpace.Graphics.Drawables;
 using EarthSpace.Input;
 using EarthSpace.Input.InputHandlers;
+using EarthSpace.Processing.Processes;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
@@ -59,6 +60,12 @@ namespace EarthSpace.UI
             titleLabel.Text = title;
             titleLabel.Origin = titleLabel.MeasureText() / 2;
             titleLabel.Position = titlePosition;
+
+            TransitionProcess titleMove = new TransitionProcess(
+                TransitionProcess.Smoothstep, -150 , titlePosition.X, 1.5f,
+                (x) => titleLabel.Position = new Vector2(x, titlePosition.Y));
+            titleMove.Begin();
+
 
             selectionSprite = new Sprite();
 

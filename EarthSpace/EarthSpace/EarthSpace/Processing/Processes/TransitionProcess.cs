@@ -57,7 +57,8 @@ namespace EarthSpace.Processing.Processes
         /// </summary>
         public void End()
         {
-            onEnd();
+            if(onEnd != null)
+                onEnd();
             ProcessManager.Remove(this);
         }
 
@@ -82,21 +83,38 @@ namespace EarthSpace.Processing.Processes
         /// <summary>
         /// The regression delegate for tweens of all sorts.
         /// </summary>
-        public delegate float Regression(float start, float end, float range, float x);
+        public delegate float Regression(float start, float end, float domain, float x);
 
         /// <summary>
         /// The linear tween for transitions between two points.
         /// </summary>
         public static Regression Linear =
-            (start, end, range, x) =>
-                ((end - start) / range) * x + start;
+            (start, end, domain, x) =>
+                ((end - start) / domain) * x + start;
 
         /// <summary>
         /// Derived from minimizing squared error between two points and equation y = kc^x.
         /// </summary>
         public static Regression Exponential =
-            (start, end, range, x) =>
-                start * (float)Math.Pow(end / start, x / range);
+            (start, end, domain, x) =>
+            {
+                float range = (float)Math.Abs(end - start);
+                float eval = 1 * (float)Math.Pow((range +1) / 1, x / domain);
+                return eval - 1 + start;
+            };
+
+        /// <summary>
+        /// Returns a smooth step regression based on Ken Perlin's smoother step equation.
+        /// Between x = 0 and x = 1, the equation is defined as y = 6t^5 -15t^4 + 10t^3
+        /// </summary>
+        public static Regression Smoothstep =
+            (start, end, domain, x) =>
+            {
+                float px = x / domain;
+                float eval = (float)(6 * Math.Pow(px, 5) - 15 * Math.Pow(px, 4) + 10 * Math.Pow(px, 3));
+
+                return eval * (end - start) + start;
+            };
 
         #endregion 'Tweenyboppers'
     }
