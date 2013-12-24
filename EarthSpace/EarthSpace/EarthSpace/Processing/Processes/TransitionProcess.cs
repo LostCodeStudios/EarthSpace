@@ -107,7 +107,7 @@ namespace EarthSpace.Processing.Processes
         /// Returns a smooth step regression based on Ken Perlin's smoother step equation.
         /// Between x = 0 and x = 1, the equation is defined as y = 6t^5 -15t^4 + 10t^3
         /// </summary>
-        public static Regression Smoothstep =
+        public static Regression SmoothStep =
             (start, end, domain, x) =>
             {
                 float px = x / domain;
