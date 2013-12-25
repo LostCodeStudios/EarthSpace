@@ -270,7 +270,15 @@ namespace EarthSpace.UI
         {
             if (!disabledEntries.Contains(selectedIndex))
             {
-                entryLabels[selectedIndex].Color = entryColor;
+                TransitionProcess colorChange = new TransitionProcess(
+                    TransitionProcess.SmoothStep, 0, 1, 0.5f,
+                    (x) =>
+                    {
+                        //Vector3 color = ((entryColorSelected.ToVector3() - entryColor.ToVector3()) * x) + entryColor.ToVector3();
+                        //entryLabels[selectedIndex].Color = new Color(color);
+                        entryLabels[selectedIndex].Color = Color.Lerp(entryColorSelected, entryColor, x);
+                    });
+                colorChange.Begin(); 
             }
 
             selectedIndex = index;
@@ -284,8 +292,9 @@ namespace EarthSpace.UI
                     TransitionProcess.SmoothStep, 0, 1, 0.5f,
                     (x) => 
                     {
-                        Vector3 color = ((entryColorSelected.ToVector3() - entryColor.ToVector3()) * x) + entryColor.ToVector3();
-                        entryLabels[selectedIndex].Color = new Color(color);
+                        //Vector3 color = ((entryColorSelected.ToVector3() - entryColor.ToVector3()) * x) + entryColor.ToVector3();
+                        //entryLabels[selectedIndex].Color = new Color(color);
+                        entryLabels[selectedIndex].Color = Color.Lerp(entryColor, entryColorSelected, x);
                     });
                 colorChange.Begin(); 
                 
