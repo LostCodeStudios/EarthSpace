@@ -1,5 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using EarthSpace.Processing.Processes;
+using System.Collections.Generic;
 
 namespace EarthSpace.Graphics.Drawables
 {
@@ -153,5 +155,89 @@ namespace EarthSpace.Graphics.Drawables
         }
 
         #endregion Helpers
+
+        #region Transitions
+
+        List<TransitionProcess> transitions = new List<TransitionProcess>();
+
+        /// <summary>
+        /// Stops all transitions.
+        /// </summary>
+        public void ClearTransitions()
+        {
+            foreach (TransitionProcess transition in transitions)
+            {
+                transition.End();
+            }
+
+            transitions.Clear();
+        }
+
+        /// <summary>
+        /// Tweens a label to a new position.
+        /// </summary>
+        /// <param name="position"></param>
+        /// <param name="regressionType"></param>
+        /// <param name="delay"></param>
+        public void Reposition(Vector2 position, TransitionProcess.Regression regressionType, float delay)
+        {
+            Vector2 start = Position;
+            
+            TransitionProcess movementProcess = new TransitionProcess(regressionType, 0, 1, delay,
+                (x) =>
+                {
+                    Vector2 offset = (position - start) * x;
+                    Position = start + offset;
+                });
+
+            movementProcess.Begin();
+
+            transitions.Add(movementProcess);
+        }
+
+        /// <summary>
+        /// Tweens a label to a new color.
+        /// </summary>
+        /// <param name="color"></param>
+        /// <param name="regressionType"></param>
+        /// <param name="delay"></param>
+        public void Recolor(Color color, TransitionProcess.Regression regressionType, float delay)
+        {
+            Color start = Color;
+
+            TransitionProcess colorChangeProcess = new TransitionProcess(regressionType, 0, 1, delay,
+                (x) =>
+                {
+                    Color = Color.Lerp(start, color, x);
+                });
+
+            colorChangeProcess.Begin();
+
+            transitions.Add(colorChangeProcess);
+        }
+
+        /// <summary>
+        /// Tweens a label to a new scale.
+        /// </summary>
+        /// <param name="scale"></param>
+        /// <param name="regressionType"></param>
+        /// <param name="delay"></param>
+        public void Rescale(Vector2 scale, TransitionProcess.Regression regressionType, float delay)
+        {
+            Vector2 start = Scale;
+
+            TransitionProcess scaleChangeProcess = new TransitionProcess(regressionType, 0, 1, delay,
+                (x) =>
+                {
+                    Vector2 offset = (scale - start) * x;
+                    Scale = start + offset;
+                });
+
+            scaleChangeProcess.Begin();
+
+            transitions.Add(scaleChangeProcess);
+        }
+
+        #endregion
     }
 }

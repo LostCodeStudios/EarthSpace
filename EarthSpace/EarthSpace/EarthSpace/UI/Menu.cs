@@ -155,7 +155,11 @@ namespace EarthSpace.UI
             titleLabel.Show();
 
             PositionSprite();
-            selectionSprite.Show();
+
+            if (selectionSprite.Texture != null)
+            {
+                selectionSprite.Show();
+            }
 
             foreach (Label entryLabel in entryLabels)
             {
@@ -181,7 +185,11 @@ namespace EarthSpace.UI
         public void Hide()
         {
             titleLabel.Hide();
-            selectionSprite.Hide();
+
+            if (selectionSprite.Texture != null)
+            {
+                selectionSprite.Hide();
+            }
 
             foreach (Label entryLabel in entryLabels)
             {
@@ -268,17 +276,12 @@ namespace EarthSpace.UI
 
         private void SelectIndex(int index)
         {
+            if (index == selectedIndex) return;
+
             if (!disabledEntries.Contains(selectedIndex))
             {
-                TransitionProcess colorChange = new TransitionProcess(
-                    TransitionProcess.SmoothStep, 0, 1, 0.5f,
-                    (x) =>
-                    {
-                        //Vector3 color = ((entryColorSelected.ToVector3() - entryColor.ToVector3()) * x) + entryColor.ToVector3();
-                        //entryLabels[selectedIndex].Color = new Color(color);
-                        entryLabels[selectedIndex].Color = Color.Lerp(entryColorSelected, entryColor, x);
-                    });
-                colorChange.Begin(); 
+                entryLabels[selectedIndex].ClearTransitions();
+                entryLabels[selectedIndex].Recolor(entryColor, TransitionProcess.SmoothStep, 0.2f);
             }
 
             selectedIndex = index;
@@ -288,21 +291,15 @@ namespace EarthSpace.UI
 
             if (!disabledEntries.Contains(selectedIndex))
             {
-                TransitionProcess colorChange = new TransitionProcess(
-                    TransitionProcess.SmoothStep, 0, 1, 0.5f,
-                    (x) => 
-                    {
-                        //Vector3 color = ((entryColorSelected.ToVector3() - entryColor.ToVector3()) * x) + entryColor.ToVector3();
-                        //entryLabels[selectedIndex].Color = new Color(color);
-                        entryLabels[selectedIndex].Color = Color.Lerp(entryColor, entryColorSelected, x);
-                    });
-                colorChange.Begin(); 
-                
+                entryLabels[selectedIndex].ClearTransitions();
+                entryLabels[selectedIndex].Recolor(entryColorSelected, TransitionProcess.SmoothStep, 0.2f);
             }
         }
 
         private void PositionSprite()
         {
+            if (selectionSprite.Texture == null) return;
+
             Vector2 spritePosition = entryLabels[selectedIndex].Position;
             spritePosition.X -= spriteOffset;
             spritePosition.X -= selectionSprite.Width / 2;

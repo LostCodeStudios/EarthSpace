@@ -59,7 +59,7 @@ namespace EarthSpace
             mainMenu.TitleColor = Color.White;
             mainMenu.EntryColor = Color.White;
             mainMenu.EntryColorSelected = Color.Red;
-            mainMenu.SelectionSprite.Texture = Content.Load<Texture2D>("Textures/sword");
+            //mainMenu.SelectionSprite.Texture = Content.Load<Texture2D>("Textures/sword");
 
             mainMenu.AddEntry("Play", OnPlay);
             mainMenu.AddEntry("Exit", OnQuit);
