@@ -108,7 +108,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Audio\SoundManager.cs" />
+    <Compile Include="Gameplay\Circle.cs" />
     <Compile Include="Gameplay\Drawables\PlayerSprite.cs" />
+    <Compile Include="Gameplay\Entity.cs" />
     <Compile Include="Gameplay\GameplayScreen.cs" />
     <Compile Include="Graphics\Drawables\Animation.cs" />
     <Compile Include="Graphics\Drawables\Label.cs" />
